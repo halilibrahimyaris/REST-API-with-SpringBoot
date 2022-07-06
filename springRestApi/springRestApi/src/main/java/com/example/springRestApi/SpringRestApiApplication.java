@@ -27,8 +27,9 @@ public class SpringRestApiApplication {
 	CommandLineRunner runner(StudentRepository studentRepository,
 							 MongoTemplate mongoTemplate){
 		String email= "halil@gmail.com";
+		Address address = new Address("Turkey","Istanbul","34542");
 		return args -> {
-			Student student1= new Student("halil","yaris",email,Gender.MALE,new Address(), List.of("computer science","maths"), BigDecimal.TEN, LocalDateTime.now());
+			Student student1= new Student("halil","yaris",email,Gender.MALE,address, List.of("computer science","maths"), BigDecimal.TEN, LocalDateTime.now());
 	//		usingMongoTemplateAndQuery(studentRepository, mongoTemplate, email, student1);
 			studentRepository.findStudentByEmail(email)
 					.ifPresentOrElse(s->{
